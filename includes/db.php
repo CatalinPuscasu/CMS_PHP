@@ -1,26 +1,26 @@
 <?php   
 
-$db ['db_host'] = 'localhost';
-$db ['db_user'] = 'root'; 
-$db ['db_pass'] = ''; 
-$db ['db_name'] = 'cms'; 
+// $db ['db_host'] = 'localhost';
+// $db ['db_user'] = 'root'; 
+// $db ['db_pass'] = ''; 
+// $db ['db_name'] = 'cms'; 
 
-//putem crea constante, pentru securitate
+// //putem crea constante, pentru securitate
 
-foreach($db as $key => $value) {
+// foreach($db as $key => $value) {
 
-  define(strtoupper($key), $value);
-}
+//   define(strtoupper($key), $value);
+// }
 
 
 
-$connection = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+$connection = mysqli_connect('localhost', 'root', '', 'cms');
  
-if ($connection)  {
+// if ($connection)  {
 
-echo 'we are connected';
+// echo 'we are connected';
 
-}
+// }
 
 
 
