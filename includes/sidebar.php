@@ -1,18 +1,40 @@
        <div class="col-md-4">
 
                 <!-- Blog Search Well -->
+
+                <?php
+
+                if (isset($_POST['submit']))  {
+
+                   echo $search = $_POST['search'];
+
+                }
+
+              
+           
+           ?>
+
+
                 <div class="well">
                     <h4>Blog Search</h4>
+                    <form action="" method = "POST">
                     <div class="input-group">
-                        <input type="text" class="form-control">
+                        <input name = "search" type="text" class="form-control">
                         <span class="input-group-btn">
-                            <button class="btn btn-default" type="button">
+                            <button class="btn btn-default" type="submit" name = "submit">
+                                <!-- tipul mereu sa fie submit, la btn -->
                                 <span class="glyphicon glyphicon-search"></span>
                         </button>
                         </span>
                     </div>
+                </form>   
+                <!-- search form -->
                     <!-- /.input-group -->
                 </div>
+
+
+
+
 
                 <!-- Blog Categories Well -->
                 <div class="well">
