@@ -4,30 +4,30 @@
 
                 <?php
 
-                if (isset($_POST['submit']))  {
+                // if (isset($_POST['submit']))  {
 
-                 $search = $_POST['search'];
+                //  $search = $_POST['search'];
 
-                   $query = "SELECT * FROM posts WHERE post_tags LIKE '%$search%' ";
+                //    $query = "SELECT * FROM posts WHERE post_tags LIKE '%$search%' ";
 
-                   $search_query = mysqli_query($connection, $query);
+                //    $search_query = mysqli_query($connection, $query);
 
-                   if (!$search_query)  {
+                //    if (!$search_query)  {
 
-                                die("query failed!" . mysqli_error($connection));
-                   }
+                //                 die("query failed!" . mysqli_error($connection));
+                //    }
 
-                   $count = mysqli_num_rows($search_query);
+                //    $count = mysqli_num_rows($search_query);
 
-                   if($count == 0) {
+                //    if($count == 0) {
 
-                    echo "<h1> NICIUN REZULTAT </h1>";
-                   } else {
+                //     echo "<h1> NICIUN REZULTAT </h1>";
+                //    } else {
 
-                    echo "cv rezultat";
-                   }
+                //     echo "cv rezultat";
+                //    }
 
-                }
+                // }
 
               
            
@@ -36,7 +36,7 @@
 
                 <div class="well">
                     <h4>Blog Search</h4>
-                    <form action="" method = "POST">
+                    <form action="search.php" method = "POST">
                     <div class="input-group">
                         <input name = "search" type="text" class="form-control">
                         <span class="input-group-btn">
