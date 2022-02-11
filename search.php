@@ -37,11 +37,11 @@
                    } else {
 
                    
-                 $query = "SELECT * FROM posts";
+            //      $query = "SELECT * FROM posts";
+                       // asta provoca eroarea de a arata toate postarile, indiferent de cautare
+            // $select_all_posts_query = mysqli_query($connection, $query);
 
-            $select_all_posts_query = mysqli_query($connection, $query);
-
-            while ($row = mysqli_fetch_assoc($select_all_posts_query))  {
+            while ($row = mysqli_fetch_assoc($search_query))  {
       
               $post_title = $row['post_title'];
               $post_author = $row['post_author'];
