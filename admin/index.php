@@ -13,7 +13,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Bunvenit is sectiunea ADMIN
+                            Bunvenit in sectiunea ADMIN
                             <small>Subheading</small>
                         </h1>
                     
