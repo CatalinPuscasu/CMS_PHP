@@ -31,6 +31,23 @@
                              </div>
                             </form>
                         </div>
+
+                        <div class="col-xs-6">
+                            <table class = "table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Category title</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>ceva</td>
+                                        <td>ceva</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     
                     </div>
                 </div>
