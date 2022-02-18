@@ -63,55 +63,18 @@
                              </div>
                             </form>
 
-                              <form action="" method = "POST">
-                                <label for="cat_title">Update Category</label>
-
-                             <?php   
-
-                             if (isset($_GET['edit']))  {
-
-                                  $category_id = $_GET['edit'];
-
-
-                                $query = "SELECT * FROM categories WHERE cat_id = $category_id "; // update all categories
-                              $select_categories_id = mysqli_query($connection, $query);
-
-                              //am schimbat putin  numele pentru a evita un conflict
-                  
-                                 
-                            while ($row = mysqli_fetch_assoc($select_categories_id))  {
-                           
-                                     
-                            $cat_id = $row['cat_id'];
-                            $cat_title = $row['cat_title'];
+                            <?php
                             
-                           ?>
+                            if (isset($_GET['edit'])) {
 
-                             <input value = "<?php if(isset($cat_title)) {echo $cat_title;} ?>" class= "form-control" type="text" name="cat_title" id="">
-                           
-                             
-                    <?php   }}  ?>
+                                   $cat_id = $_GET['edit'];
 
-                        
+                                   include "includes/update_categories.php";
+                            }
+
+                            ?>
+
                             
-                              
-
-                             
-                
-                              
-                             
-                    
-
-                                <div class="form-group">
-                                        
-                               
-                             </div>
-
-                               <div class="form-group">
-                                        
-                                <input class = "btn btn-primary" type="submit" name="submit" id="" value ="Update Category">
-                             </div>
-                            </form>
                         </div>
 
                         <div class="col-xs-6">
