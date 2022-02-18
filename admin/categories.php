@@ -35,7 +35,7 @@
                              </div>
                             </form>
 
-                            <?php
+                            <?php  // update and include
                             
                             if (isset($_GET['edit'])) {
 
@@ -61,45 +61,17 @@
                                 <tbody>
 
                                  <?php  
-                                  $query = "SELECT * FROM categories"; // FIND all categories
-                                  $select_categories = mysqli_query($connection, $query);
-                  
+                                 // FIND all categories
                                  
-                                 while ($row = mysqli_fetch_assoc($select_categories))  {
+                 findAllCategories();                
+                             ?>
 
-                                     
-              $cat_id = $row['cat_id'];
-      
-              $cat_title = $row['cat_title'];
-            echo "<tr>";
-             echo " <td>{$cat_id}</td>";
-             echo "<td>{$cat_title}</td>";
-             echo "<td><a href = 'categories.php?delete={$cat_id}'>Delete</a></td>";
-             echo "<td><a href = 'categories.php?edit={$cat_id}'>Edit</a></td>";
-             echo "</tr>";
+                   //delete query
 
-
-           }    
-           ?>
-
-           <?php  //delete query
+           <?php  deleteCategories();?>
            
-           if (isset($_GET['delete'])) {
-
-             // cand ajunge la GET, putem numi o variabila(cat_id) gen diferit
-            $the_cat_id = $_GET['delete'];
-
-            $query = "DELETE FROM categories WHERE cat_id = {$the_cat_id} ";
-
-            $delete_query = mysqli_query($connection, $query);
-
-            header("Location: categories.php");
-
-           }
+               
            
-           
-           
-           ?>
                                    
                                     
                                     
