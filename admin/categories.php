@@ -66,7 +66,7 @@
                  findAllCategories();                
                              ?>
 
-                   //delete query
+                   <!-- //delete query -->
 
            <?php  deleteCategories();?>
            
