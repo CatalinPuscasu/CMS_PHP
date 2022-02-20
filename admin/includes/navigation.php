@@ -44,15 +44,15 @@
                         <ul id="posts_dropdown" class="collapse">
                             <!-- data tagert e din JS, ca sa se deschida dropdwonul bun, in bootstrap -->
                             <li>
-                                <a href="#">View all Posts</a>
+                                <a href="posts.php">View all Posts</a>
                             </li>
                             <li>
-                                <a href="#">Add post</a>
+                                <a href="add_post.php">Add post</a>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Categories</a>
+                        <a href="categories.php"><i class="fa fa-fw fa-wrench"></i> Categories</a>
                     </li>
                 
                     <li class="active">
