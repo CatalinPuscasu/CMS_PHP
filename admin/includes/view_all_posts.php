@@ -44,6 +44,7 @@
                           echo "<td>{$post_tags}</td>"; 
                           echo "<td>{$post_comment_count}</td>"; 
                           echo "<td>{$post_date}</td>"; 
+                          echo "<td><a href='posts.php?delete={$post_id}'>DELETE</a></td>"; 
                           echo "</tr>";
                           }
                           
@@ -61,3 +62,22 @@
                                  </tr>
                              </tbody>
                          </table>
+
+                         <?php   
+                         
+                         if (isset($_GET['delete']))  {
+                              
+                            ob_start(); // ca sa nu mai apas de 2 ori ca sa sterg cv
+
+                           $the_post_id = $_GET['delete'];
+
+                           $query = "DELETE FROM postari WHERE post_id = {$the_post_id} ";
+                           $delete_query = mysqli_query($connection, $query);
+
+                         }  
+                         
+                         
+                         
+                         
+                         
+                         ?>
