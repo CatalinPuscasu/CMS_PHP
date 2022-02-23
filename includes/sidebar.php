@@ -60,7 +60,7 @@
 
                   <?php   
                   
-                   $query = "SELECT * FROM categories";
+                   $query = "SELECT * FROM categorii";
            $select_categories_sidebar = mysqli_query($connection, $query);
                   
                   

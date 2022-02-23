@@ -8,7 +8,7 @@
                                   $category_id = $_GET['edit'];
 
 
-                                $query = "SELECT * FROM categories WHERE cat_id = $category_id "; // update all categories
+                                $query = "SELECT * FROM categorii WHERE cat_id = $category_id "; // update all categories
                               $select_categories_id = mysqli_query($connection, $query);
 
                               //am schimbat putin  numele pentru a evita un conflict
@@ -35,7 +35,7 @@
              // cand ajunge la GET, putem numi o variabila(cat_id) gen diferit
             $the_cat_title = $_POST['cat_title'];
 
-            $query = "UPDATE categories SET cat_title = '{$the_cat_title}' WHERE cat_id = {$cat_id} ";
+            $query = "UPDATE categorii SET cat_title = '{$the_cat_title}' WHERE cat_id = {$cat_id} ";
 
             $update_query = mysqli_query($connection, $query);
                           }

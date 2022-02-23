@@ -14,12 +14,16 @@
 
 
 
-$connection = mysqli_connect('localhost', 'root', '', 'cms');
+$connection = mysqli_connect('localhost', 'root', '', 'cms', 4306);
  
 // if ($connection)  {
 
 // echo 'we are connected';
 
+// }  else {
+
+
+//     die("cv" . mysqli_error($connection));
 // }
 
 

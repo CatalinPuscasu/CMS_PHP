@@ -26,7 +26,7 @@ function insert_categories () {
                          echo "This field must not be empty";
                      }  else {
 
-                        $query = "INSERT INTO categories(cat_title) ";
+                        $query = "INSERT INTO categorii(cat_title) ";
                         $query .= "VALUE('{$cat_title}') ";
 
                         $create_category_query = mysqli_query($connection, $query);
@@ -45,7 +45,7 @@ function findAllCategories () {
 
     global $connection;
 
-     $query = "SELECT * FROM categories"; 
+     $query = "SELECT * FROM categorii"; 
                                   $select_categories = mysqli_query($connection, $query);
                   
                                  
@@ -79,7 +79,7 @@ function deleteCategories() {
              // cand ajunge la GET, putem numi o variabila(cat_id) gen diferit
             $the_cat_id = $_GET['delete'];
 
-            $query = "DELETE FROM categories WHERE cat_id = {$the_cat_id} ";
+            $query = "DELETE FROM categorii WHERE cat_id = {$the_cat_id} ";
 
             $delete_query = mysqli_query($connection, $query);
 

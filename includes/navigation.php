@@ -18,7 +18,7 @@
         
            <?php   
            
-           $query = "SELECT * FROM categories";
+           $query = "SELECT * FROM categorii";
            $select_all_categories_query = mysqli_query($connection, $query);
            
            while ($row = mysqli_fetch_assoc($select_all_categories_query))  {
@@ -33,10 +33,10 @@
            ?>
 
 
-                    <!-- <li>
-                        <a href="#">About</a>
-                    </li>
                     <li>
+                        <a href="admin">Admin</a>
+                    </li>
+                    <!-- <li>
                         <a href="#">Services</a>
                     </li>
                     <li>

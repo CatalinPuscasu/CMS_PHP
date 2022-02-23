@@ -16,7 +16,7 @@
                               
                           <?php  
                           
-                          $query = "SELECT * FROM posts"; 
+                          $query = "SELECT * FROM postari"; 
                           $select_posts = mysqli_query($connection, $query);
                   
                                  
