@@ -50,16 +50,7 @@
                           
                           ?>
 
-                                     <td>12</td>
-                                     <td>Eu</td>
-                                     <td>Boostrap</td>
-                                     <td>PHP</td>
-                                     <td>status</td>
-                                     <td>image</td>
-                                     <td>tags</td>
-                                     <td>comments</td>
-                                     <td>date</td>
-                                 </tr>
+                             
                              </tbody>
                          </table>
 
