@@ -84,8 +84,8 @@ $query = "SELECT * FROM postari WHERE post_id = $the_get_post_id ";
 
 
     <div class="form-group">
-        <label for="post_category">Post Category ID</label>
-        <input value="<?php echo $post_category_id ?>" type="text" name="post_category" id="" class = "form-control">
+        <label for="post_category">Post Tags</label>
+        <input value="<?php echo $post_tags ?>" type="text" name="post_tags" id="" class = "form-control">
     </div>
 
     <div class="form-group">
@@ -106,8 +106,8 @@ $query = "SELECT * FROM postari WHERE post_id = $the_get_post_id ";
     </div>
 
     <div class="form-group">
-        <label for="post_tags">Post Tags</label>
-        <select name="post_tags" id="">
+        <label for="post_category">Post Categories</label>
+        <select name="post_category" id="">
 
 <?php  
 
