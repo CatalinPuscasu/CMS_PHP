@@ -55,20 +55,43 @@ $query = "SELECT * FROM postari";
     </div>
 
      <div class="form-group">
-        <label for="post_image">Post Image</label>
-        <input type="file" name="image" id="" class = "form-control">
+       
+        <img width="100" src="../images/<?php echo $post_image   ?>" alt="">
     </div>
 
     <div class="form-group">
         <label for="post_tags">Post Tags</label>
-        <input value="<?php echo $post_tags ?>" type="text" name="post_tags" id="" class = "form-control">
+        <select name="post_category" id="post_category">
+
+<?php  
+
+
+  $query = "SELECT * FROM categorii "; // update all categories
+                              $select_categories = mysqli_query($connection, $query);
+
+                              //am schimbat putin  numele pentru a evita un conflict
+                  
+                                 
+                            while ($row = mysqli_fetch_assoc($select_categories))  {
+                           
+                                     
+                            $cat_id = $row['cat_id'];
+                            $cat_title = $row['cat_title'];
+
+                             echo "<option value='{$cat_id}'>{$cat_title}</option>";
+
+                            }
+
+?>
+
+
+        </select>
     </div>
 
     <div class="form-group">
         <label for="post_content">Post Content</label>
-        <textarea class = "form-control" name="post_content" id="" cols="30" rows="10">
-           <?php echo $post_content ?>
-        </textarea>
+        <textarea class = "form-control" name="post_content" id="" cols="30" rows="10"><?php echo $post_content ?>
+            </textarea>
     </div>
 
     <div class="form-group">
@@ -76,3 +99,4 @@ $query = "SELECT * FROM postari";
     </div>
 
 </form>
+
