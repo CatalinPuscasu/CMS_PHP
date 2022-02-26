@@ -7,7 +7,7 @@ if (isset($_GET['p_id']))  {
 
 }
 
-$query = "SELECT * FROM postari"; 
+$query = "SELECT * FROM postari WHERE post_id = $the_get_post_id "; 
                           $select_posts_by_id = mysqli_query($connection, $query);
                   
                                  
@@ -27,6 +27,50 @@ $query = "SELECT * FROM postari";
 
                           }
 
+                          if (isset($_POST['update_post'])) {
+
+                          $post_author = $_POST['post_author'];
+                          $post_title = $_POST['post_title'];
+                          $post_category_id = $_POST['post_category'];
+                          $post_status = $_POST['post_status'];
+                          $post_image = $_FILES['image']['name'];
+                          $post_image_temp = $_FILES['image']['tmp_name'];
+                          $post_content = $_POST['post_content'];
+                          $post_tags = $_POST['post_tags'];
+
+                          move_uploaded_file($post_image_temp, "../images/$post_image");
+
+                          // ca imaginea sa fie prezenta, chiar daca nicuna nu este pusa in formular
+
+                          if(empty($post_image)) {
+
+                            $query = "SELECT * FROM postari WHERE post_id = $the_get_post_id ";
+
+                            $select_image = mysqli_query($connection, $query);
+
+                            while($row = mysqli_fetch_array($select_image)) {
+
+                                 $post_image = $row['post_image'];
+                            }
+
+                          }
+                          //----------------------------------------------------------------------------------------
+
+                          $query = "UPDATE postari SET ";
+                          $query.="post_title = '{$post_title}', ";
+                          $query.="post_category_id = '{$post_category_id}', ";
+                          $query.="post_date = now(), ";
+                          $query.="post_author = '{$post_author}', ";
+                          $query.="post_tags = '{$post_tags}', ";
+                          $query.="post_content = '{$post_content}', ";
+                          $query.="post_image = '{$post_image}' ";  // fara virgula la chestia dinaintea lui WHERE!!
+                          $query.=" WHERE post_id = {$the_get_post_id} ";
+
+                          $update_query = mysqli_query($connection, $query);
+
+
+                          }
+
 
 ?>
 
@@ -35,18 +79,18 @@ $query = "SELECT * FROM postari";
 
     <div class="form-group">
         <label for="title">Post title</label>
-        <input value="<?php echo $post_title ?>" type="text" name="title" id="" class = "form-control">
+        <input value="<?php echo $post_title ?>" type="text" name="post_title" id="" class = "form-control">
     </div>
 
 
     <div class="form-group">
         <label for="post_category">Post Category ID</label>
-        <input value="<?php echo $post_category_id ?>" type="text" name="post_category_id" id="" class = "form-control">
+        <input value="<?php echo $post_category_id ?>" type="text" name="post_category" id="" class = "form-control">
     </div>
 
     <div class="form-group">
         <label for="author">Post Author</label>
-        <input value="<?php echo $post_author ?>" type="text" name="author" id="" class = "form-control">
+        <input value="<?php echo $post_author ?>" type="text" name="post_author" id="" class = "form-control">
     </div>
 
     <div class="form-group">
@@ -56,12 +100,14 @@ $query = "SELECT * FROM postari";
 
      <div class="form-group">
        
-        <img width="100" src="../images/<?php echo $post_image   ?>" alt="">
+        <img width="100" src="../images/<?php echo $post_image   ?>" alt="" name ="image" >
+        <br>
+        <input type="file" name="image" id="">
     </div>
 
     <div class="form-group">
         <label for="post_tags">Post Tags</label>
-        <select name="post_category" id="post_category">
+        <select name="post_tags" id="">
 
 <?php  
 
@@ -95,7 +141,7 @@ $query = "SELECT * FROM postari";
     </div>
 
     <div class="form-group">
-        <input class = "btn btn-primary" type="submit" value="Publish Post" name = "create_post">
+        <input class = "btn btn-primary" type="submit" value="Update post" name = "update_post">
     </div>
 
 </form>
