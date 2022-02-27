@@ -66,14 +66,44 @@
          
                   <!-- Blog Comments -->
 
+                 <?php 
+                 
+                 if (isset($_POST['create_comment'])) {
+
+
+
+
+
+                 }
+                 
+                 
+                 
+                 
+                 ?>
+
+
+
+
                 <!-- Comments Form -->
                 <div class="well">
                     <h4>Leave a Comment:</h4>
-                    <form role="form">
+                    <form role="form" action="" method="POST">
+
                         <div class="form-group">
-                            <textarea class="form-control" rows="3"></textarea>
+                            <label for="author">Leave your name here</label>
+                            <input type="text" name="comment_author" class="form-control">
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+
+                        <div class="form-group">
+                            <label for="email">Leave your email here</label>
+                            <input type="email" name="comment_email" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="textarea">Your comment!</label>
+                            <textarea class="form-control" rows="3" name="comment_content"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" name="create_comment">Submit</button>
                     </form>
                 </div>
 
