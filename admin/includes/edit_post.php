@@ -62,6 +62,7 @@ $query = "SELECT * FROM postari WHERE post_id = $the_get_post_id ";
                           $query.="post_date = now(), ";
                           $query.="post_author = '{$post_author}', ";
                           $query.="post_tags = '{$post_tags}', ";
+                          $query.="post_status = '{$post_status}', ";
                           $query.="post_content = '{$post_content}', ";
                           $query.="post_image = '{$post_image}' ";  // fara virgula la chestia dinaintea lui WHERE!!
                           $query.=" WHERE post_id = {$the_get_post_id} ";
