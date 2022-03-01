@@ -74,13 +74,12 @@
 
                          }
 
-                          echo "<td>Comment post ID</td>"; 
 
 
 
                           echo "<td>{$comment_date}</td>"; 
-                          echo "<td><a href='posts.php?source=edit_post&p_id='>APPROVE</a></td>";
-                          echo "<td><a href='posts.php?delete='>UNAPPROVE</a></td>"; 
+                          echo "<td><a href='comments.php?approve=$comment_id'>APPROVE</a></td>";
+                          echo "<td><a href='comments.php?unapprove=$comment_id'>UNAPPROVE</a></td>"; 
                           echo "<td><a href='comments.php?delete=$comment_id'>DELETE</a></td>"; 
                           echo "</tr>";
                           }
@@ -91,7 +90,45 @@
                              </tbody>
                          </table>
 
-                         <?php   
+                         <?php 
+
+                         //----------- APPROVE ----------------------------------------------------
+
+                         if (isset($_GET['approve']))  {
+                              
+
+                           $the_comment_id = $_GET['approve'];
+
+                           $query = "UPDATE comments SET comment_status = 'approved' WHERE comment_id = $the_comment_id ";
+                           $approve_query = mysqli_query($connection, $query);
+
+                            header("Location: comments.php"); // ca sa nu mai apas de 2 ori ca sa sterg cv
+
+                            
+
+
+                         }  
+
+                         //------UNAPPROVE----------------------------------------------------------------
+                         
+                          if (isset($_GET['unapprove']))  {
+                              
+
+                           $the_comment_id = $_GET['unapprove'];
+
+                           $query = "UPDATE comments SET comment_status = 'unapproved' WHERE comment_id = $the_comment_id ";
+                           $unapprove_query = mysqli_query($connection, $query);
+
+                            header("Location: comments.php"); // ca sa nu mai apas de 2 ori ca sa sterg cv
+
+                            
+
+
+                         }  
+
+                        //-------------------------------------------------------------------------------------------
+
+                        //DELETE
                          
                          if (isset($_GET['delete']))  {
                               
