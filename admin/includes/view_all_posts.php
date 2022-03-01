@@ -10,6 +10,8 @@
                                      <th>Tags</th>
                                      <th>Comments</th>
                                      <th>Date</th>
+                                     <th>Edit</th>
+                                     <th>Delete</th>
                                  </tr>
                              </thead>
                              <tbody>
@@ -80,7 +82,7 @@
                          
                          if (isset($_GET['delete']))  {
                               
-                            ob_start(); // ca sa nu mai apas de 2 ori ca sa sterg cv
+                           header("Location : posts.php"); // ca sa nu mai apas de 2 ori ca sa sterg cv
 
                            $the_post_id = $_GET['delete'];
 
