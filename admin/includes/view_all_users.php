@@ -2,15 +2,13 @@
                              <thead>
                                  <tr>
                                      <th>ID</th>
-                                     <th>Author</th>
-                                     <th>Comment</th>
+                                     <th>Username</th>
+                                     <th>FirstName</th>
+                                     <th>LastName</th>
                                      <th>Email</th>
-                                     <th>Status</th>
-                                     <th>In response to</th>
+                                     <th>Role</th>
                                      <th>Date</th>
-                                     <th>Approve</th>
-                                     <th>Unapprove</th>
-                                     <th>Delete</th>
+                                   
                                  </tr>
                              </thead>
                              <tbody>
