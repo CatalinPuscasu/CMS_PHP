@@ -7,35 +7,34 @@
                                      <th>LastName</th>
                                      <th>Email</th>
                                      <th>Role</th>
-                                     <th>Date</th>
-                                   
                                  </tr>
                              </thead>
                              <tbody>
                               
                           <?php  
                           
-                          $query = "SELECT * FROM comments"; 
-                          $select_comments = mysqli_query($connection, $query);
+                          $query = "SELECT * FROM users"; 
+                          $select_users = mysqli_query($connection, $query);
                   
                                  
-                          while ($row = mysqli_fetch_assoc($select_comments))  {
+                          while ($row = mysqli_fetch_assoc($select_users))  {
 
                               
-                          $comment_id = $row['comment_id'];
-                          $comment_author = $row['comment_author'];
-                          $comment_email = $row['comment_email'];                          
-                          $comment_post_id = $row['comment_post_id'];
-                          $comment_status = $row['comment_status'];
-                          $comment_content = $row['comment_content'];
-                          $comment_date = $row['comment_date'];
+                          $user_id = $row['user_id'];
+                          $username = $row['username'];
+                          $user_email = $row['user_email'];                          
+                          $user_password = $row['user_password'];
+                          $user_firstname = $row['user_first_name'];
+                          $user_lastname = $row['user_last_name'];
+                          $user_image = $row['user_image'];
+                          $user_role = $row['user_role'];
                           
 
 
                           echo "<tr>";
-                          echo "<td>{$comment_id}</td>"; 
-                          echo "<td>{$comment_author}</td>"; 
-                          echo "<td>{$comment_content}</td>"; 
+                          echo "<td>{$user_id}</td>"; 
+                          echo "<td>{$username}</td>"; 
+                          echo "<td>{$user_firstname}</td>"; 
 
                         //       $query = "SELECT * FROM categorii WHERE cat_id = {$post_category_id} "; //relational
                         //       $select_categories_id = mysqli_query($connection, $query);
@@ -58,27 +57,27 @@
 
 
 
-                          echo "<td>{$comment_email}</td>"; 
-                          echo "<td>{$comment_status}</td>"; 
+                          echo "<td>{$user_lastname}</td>"; 
+                          echo "<td>{$user_email}</td>"; 
 
-                         $query = "SELECT * FROM postari WHERE post_id = $comment_post_id ";  // relational db
-                         $select_post_id_query = mysqli_query($connection, $query);
-                         while($row = mysqli_fetch_assoc($select_post_id_query)) {
+                        //  $query = "SELECT * FROM postari WHERE post_id = $comment_post_id ";  // relational db
+                        //  $select_post_id_query = mysqli_query($connection, $query);
+                        //  while($row = mysqli_fetch_assoc($select_post_id_query)) {
                           
-                          $post_id = $row['post_id'];
-                          $post_title = $row['post_title'];
+                        //   $post_id = $row['post_id'];
+                        //   $post_title = $row['post_title'];
 
-                          echo "<td><a href='../post.php?p_id=$post_id'>$post_title</a> </td>"; 
+                        //   echo "<td><a href='../post.php?p_id=$post_id'>$post_title</a> </td>"; 
 
-                         }
-
-
+                        //  }
 
 
-                          echo "<td>{$comment_date}</td>"; 
-                          echo "<td><a href='comments.php?approve=$comment_id'>APPROVE</a></td>";
-                          echo "<td><a href='comments.php?unapprove=$comment_id'>UNAPPROVE</a></td>"; 
-                          echo "<td><a href='comments.php?delete=$comment_id'>DELETE</a></td>"; 
+
+
+                          echo "<td>{$user_role}</td>"; 
+                          echo "<td><a href='comments.php?approve='>APPROVE</a></td>";
+                          echo "<td><a href='comments.php?unapprove='>UNAPPROVE</a></td>"; 
+                          echo "<td><a href='comments.php?delete='>DELETE</a></td>"; 
                           echo "</tr>";
                           }
                           
