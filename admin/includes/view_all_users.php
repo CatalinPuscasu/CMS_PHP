@@ -77,7 +77,7 @@
                           echo "<td>{$user_role}</td>"; 
                           echo "<td><a href='comments.php?approve='>APPROVE</a></td>";
                           echo "<td><a href='comments.php?unapprove='>UNAPPROVE</a></td>"; 
-                          echo "<td><a href='comments.php?delete='>DELETE</a></td>"; 
+                          echo "<td><a href='users.php?delete={$user_id}'>DELETE</a></td>"; 
                           echo "</tr>";
                           }
                           
@@ -130,12 +130,12 @@
                          if (isset($_GET['delete']))  {
                               
 
-                           $the_comment_id = $_GET['delete'];
+                           $the_user_id = $_GET['delete'];
 
-                           $query = "DELETE FROM comments WHERE comment_id = {$the_comment_id} ";
-                           $delete_query = mysqli_query($connection, $query);
+                           $query = "DELETE FROM users WHERE user_id = {$the_user_id} ";
+                           $delete_user_query = mysqli_query($connection, $query);
 
-                            header("Location: comments.php"); // ca sa nu mai apas de 2 ori ca sa sterg cv
+                            header("Location: users.php"); // ca sa nu mai apas de 2 ori ca sa sterg cv
 
 
                          }  
