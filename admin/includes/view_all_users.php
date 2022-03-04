@@ -75,8 +75,8 @@
 
 
                           echo "<td>{$user_role}</td>"; 
-                          echo "<td><a href='comments.php?approve='>APPROVE</a></td>";
-                          echo "<td><a href='comments.php?unapprove='>UNAPPROVE</a></td>"; 
+                          echo "<td><a href='users.php?change_to_admin={$user_id}'>Admin</a></td>";
+                          echo "<td><a href='users.php?change_to_sub={$user_id}'>Subscriber</a></td>"; 
                           echo "<td><a href='users.php?delete={$user_id}'>DELETE</a></td>"; 
                           echo "</tr>";
                           }
@@ -89,34 +89,34 @@
 
                          <?php 
 
-                         //----------- APPROVE ----------------------------------------------------
+                         //----------- ADMIN ----------------------------------------------------
 
-                         if (isset($_GET['approve']))  {
+                         if (isset($_GET['change_to_admin']))  {
                               
 
-                           $the_comment_id = $_GET['approve'];
+                           $the_admin_id = $_GET['change_to_admin'];
 
-                           $query = "UPDATE comments SET comment_status = 'approved' WHERE comment_id = $the_comment_id ";
-                           $approve_query = mysqli_query($connection, $query);
+                           $query = "UPDATE users SET user_role = 'admin' WHERE user_id = $the_admin_id ";
+                           $admin_query = mysqli_query($connection, $query);
 
-                            header("Location: comments.php"); // ca sa nu mai apas de 2 ori ca sa sterg cv
+                            header("Location: users.php"); // ca sa nu mai apas de 2 ori ca sa sterg cv
 
                             
 
 
                          }  
 
-                         //------UNAPPROVE----------------------------------------------------------------
+                         //------SUBSCRIBER----------------------------------------------------------------
                          
-                          if (isset($_GET['unapprove']))  {
+                          if (isset($_GET['change_to_sub']))  {
                               
 
-                           $the_comment_id = $_GET['unapprove'];
+                           $the_subscriber_id = $_GET['change_to_sub'];
 
-                           $query = "UPDATE comments SET comment_status = 'unapproved' WHERE comment_id = $the_comment_id ";
-                           $unapprove_query = mysqli_query($connection, $query);
+                           $query = "UPDATE users SET user_role = 'subscriber' WHERE user_id = $the_subscriber_id ";
+                           $subscriber_query = mysqli_query($connection, $query);
 
-                            header("Location: comments.php"); // ca sa nu mai apas de 2 ori ca sa sterg cv
+                            header("Location: users.php"); // ca sa nu mai apas de 2 ori ca sa sterg cv
 
                             
 
