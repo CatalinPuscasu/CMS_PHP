@@ -5,13 +5,13 @@
 
 <?php  
 
-if ($_SESSION['role']) {
+if (!isset($_SESSION['role'])) {
 
-   if ($_SESSION['role'] !== 'admin') {
+  
    
       header("Location: ../index.php");
 
-   }
+
     
 }
 
