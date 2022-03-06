@@ -16,7 +16,7 @@
                     <div class="col-lg-12">
                         <h1 class="page-header">
                             Bunvenit in sectiunea ADMIN
-                            <small>Subheading</small>
+                            <small><?php echo $_SESSION['username']; ?></small>
                         </h1>
                     
                     </div>
