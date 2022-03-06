@@ -16,10 +16,31 @@ if (isset($_POST['login'])) {
 
   while ($row = mysqli_fetch_array($select_user_query))  {
 
-        echo  $db_id = $row['user_id'];
-
-
+        $db_id = $row['user_id'];
+        $db_username = $row['username'];
+        $db_password = $row['user_password'];
+        $db_firstname = $row['user_first_name'];
+        $db_lastname = $row['user_last_name'];
+        $db_role = $row['user_role'];
   }
+
+ if($username !== $db_username && $password !== $db_password) {
+
+    header("Location: ../index.php");
+
+ }  else if ($username == $db_username && $password == $db_password) {
+
+    header("Location: ../admin/index.php");
+    
+
+ }  else {
+
+    header("Location: ../index.php");
+   
+
+ }
+
+
 }
 
 
