@@ -14,7 +14,7 @@
 
 
 
-$connection = mysqli_connect('localhost', 'root', '', 'cms', 4306);
+$connection = mysqli_connect('localhost', 'root', '', 'cms');
  
 // if ($connection)  {
 
