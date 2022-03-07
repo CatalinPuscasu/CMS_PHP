@@ -4,7 +4,24 @@
 
 if(isset($_SESSION['username'])) {
 
-   $_SESSION['username'];
+  $username =  $_SESSION['username'];
+
+  $query = "SELECT * FROM users WHERE username = '{$username}' ";
+
+  $select_user_profile = mysqli_query($connection, $query);
+
+  while ($row = mysqli_fetch_array($select_user_profile)) {
+
+                          $user_id = $row['user_id'];
+                          $username = $row['username'];
+                          $user_email = $row['user_email'];                          
+                          $user_password = $row['user_password'];
+                          $user_firstname = $row['user_first_name'];
+                          $user_lastname = $row['user_last_name'];
+                          $user_image = $row['user_image'];
+                          $user_role = $row['user_role'];
+
+  }
 
 }
 
@@ -27,7 +44,7 @@ if(isset($_SESSION['username'])) {
 
                       <h1 class="page-header">
                             Bunvenit in sectiunea ADMIN
-                            <small><?php echo $_SESSION['username']; ?></small>
+                            <small><?php echo $username; ?></small>
                         </h1>
 
               <form action="" method = "POST" enctype= "multipart/form-data">
@@ -86,7 +103,7 @@ if(isset($_SESSION['username'])) {
     </div>
 
     <div class="form-group">
-        <input class = "btn btn-primary" type="submit" value="Edit user" name = "edit_user">
+        <input class = "btn btn-primary" type="submit" value="Edit profile" name = "edit_profile">
     </div>
 
 </form>
