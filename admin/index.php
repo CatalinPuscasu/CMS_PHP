@@ -164,6 +164,32 @@
 </div>
                 <!-- /.row -->
 
+   <?php   
+   
+    $query = "SELECT * FROM postari WHERE post_status = 'draft' ";
+
+    $display_draft_posts = mysqli_query($connection, $query);
+    $draft_post_counts = mysqli_num_rows($display_draft_posts);
+
+    $query = "SELECT * FROM comments WHERE comment_status = 'unapproved' ";
+
+    $display_unapproved_comments = mysqli_query($connection, $query);
+    $unapproved_comments_counts = mysqli_num_rows($display_unapproved_comments);
+
+    $query = "SELECT * FROM users WHERE user_role = 'subscriber' ";
+
+    $display_subcribers = mysqli_query($connection, $query);
+    $subscribers_counts = mysqli_num_rows($display_subcribers);
+   
+   
+   
+   
+   
+   ?>
+
+
+
+
                 <div class="row">
 
     <script type="text/javascript">
@@ -176,10 +202,10 @@
 
         <?php  
         
-        $element_text = ['Active Posts', 'Comments', 'Users', 'Categories'];
-        $element_count = [$post_counts, $comment_counts, $user_counts, $category_counts];
+        $element_text = ['Active Posts', 'Draft Posts', 'Comments', 'Unapproved comments' , 'Users', 'Subscribers' , 'Categories'];
+        $element_count = [$post_counts, $draft_post_counts , $comment_counts, $unapproved_comments_counts , $user_counts, $subscribers_counts , $category_counts];
 
-        for ($i = 0; $i < 4; $i++)  {
+        for ($i = 0; $i < 7; $i++)  {
 
           echo "['{$element_text[$i]}'" . "," . "{$element_count[$i]}],";
 
