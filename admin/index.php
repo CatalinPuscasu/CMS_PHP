@@ -38,7 +38,17 @@
                         <i class="fa fa-file-text fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                  <div class='huge'>12</div>
+
+    <?php  
+    
+    $query = "SELECT * FROM postari";
+
+    $display_posts_number = mysqli_query($connection, $query);
+    $post_counts = mysqli_num_rows($display_posts_number);
+               echo   "<div class='huge'>{$post_counts}</div>"
+    
+    ?>
+
                         <div>Posts</div>
                     </div>
                 </div>
@@ -60,7 +70,19 @@
                         <i class="fa fa-comments fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                     <div class='huge'>23</div>
+
+<?php  
+    
+    $query = "SELECT * FROM comments";
+
+    $display_comments_number = mysqli_query($connection, $query);
+    $comment_counts = mysqli_num_rows($display_comments_number);
+               echo   "<div class='huge'>{$comment_counts}</div>"
+    
+    ?>
+
+
+                  
                       <div>Comments</div>
                     </div>
                 </div>
@@ -82,7 +104,18 @@
                         <i class="fa fa-user fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                    <div class='huge'>23</div>
+
+<?php  
+    
+    $query = "SELECT * FROM users";
+
+    $display_users_number = mysqli_query($connection, $query);
+    $user_counts = mysqli_num_rows($display_users_number);
+               echo   "<div class='huge'>{$user_counts}</div>"
+    
+    ?>
+
+
                         <div> Users</div>
                     </div>
                 </div>
@@ -104,7 +137,17 @@
                         <i class="fa fa-list fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                        <div class='huge'>13</div>
+
+<?php  
+    
+    $query = "SELECT * FROM categorii";
+
+    $display_categories_number = mysqli_query($connection, $query);
+    $category_counts = mysqli_num_rows($display_categories_number);
+               echo   "<div class='huge'>{$category_counts}</div>"
+    
+    ?>
+
                          <div>Categories</div>
                     </div>
                 </div>
