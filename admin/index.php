@@ -39,15 +39,15 @@
                     </div>
                     <div class="col-xs-9 text-right">
 
-    <?php  
-    
-    $query = "SELECT * FROM postari";
+                        <?php  
+                        
+                        $query = "SELECT * FROM postari";
 
-    $display_posts_number = mysqli_query($connection, $query);
-    $post_counts = mysqli_num_rows($display_posts_number);
-               echo   "<div class='huge'>{$post_counts}</div>"
-    
-    ?>
+                        $display_posts_number = mysqli_query($connection, $query);
+                        $post_counts = mysqli_num_rows($display_posts_number);
+                                echo   "<div class='huge'>{$post_counts}</div>"
+                        
+                        ?>
 
                         <div>Posts</div>
                     </div>
@@ -71,15 +71,15 @@
                     </div>
                     <div class="col-xs-9 text-right">
 
-<?php  
-    
-    $query = "SELECT * FROM comments";
+                    <?php  
+                        
+                        $query = "SELECT * FROM comments";
 
-    $display_comments_number = mysqli_query($connection, $query);
-    $comment_counts = mysqli_num_rows($display_comments_number);
-               echo   "<div class='huge'>{$comment_counts}</div>"
-    
-    ?>
+                        $display_comments_number = mysqli_query($connection, $query);
+                        $comment_counts = mysqli_num_rows($display_comments_number);
+                                echo   "<div class='huge'>{$comment_counts}</div>"
+                        
+                        ?>
 
 
                   
@@ -105,15 +105,15 @@
                     </div>
                     <div class="col-xs-9 text-right">
 
-<?php  
-    
-    $query = "SELECT * FROM users";
+                <?php  
+                    
+                    $query = "SELECT * FROM users";
 
-    $display_users_number = mysqli_query($connection, $query);
-    $user_counts = mysqli_num_rows($display_users_number);
-               echo   "<div class='huge'>{$user_counts}</div>"
-    
-    ?>
+                    $display_users_number = mysqli_query($connection, $query);
+                    $user_counts = mysqli_num_rows($display_users_number);
+                            echo   "<div class='huge'>{$user_counts}</div>"
+                    
+                    ?>
 
 
                         <div> Users</div>
@@ -138,15 +138,15 @@
                     </div>
                     <div class="col-xs-9 text-right">
 
-<?php  
-    
-    $query = "SELECT * FROM categorii";
+                    <?php  
+                        
+                        $query = "SELECT * FROM categorii";
 
-    $display_categories_number = mysqli_query($connection, $query);
-    $category_counts = mysqli_num_rows($display_categories_number);
-               echo   "<div class='huge'>{$category_counts}</div>"
-    
-    ?>
+                        $display_categories_number = mysqli_query($connection, $query);
+                        $category_counts = mysqli_num_rows($display_categories_number);
+                                echo   "<div class='huge'>{$category_counts}</div>"
+                        
+                        ?>
 
                          <div>Categories</div>
                     </div>
@@ -172,17 +172,35 @@
 
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-          ['Year', 'Sales', 'Expenses', 'Profit'],
-          ['2014', 1000, 400, 200],
-          ['2015', 1170, 460, 250],
-          ['2016', 660, 1120, 300],
-          ['2017', 1030, 540, 350]
+          ['Data', 'Count'],
+
+        <?php  
+        
+        $element_text = ['Active Posts', 'Comments', 'Users', 'Categories'];
+        $element_count = [$post_counts, $comment_counts, $user_counts, $category_counts];
+
+        for ($i = 0; $i < 4; $i++)  {
+
+          echo "['{$element_text[$i]}'" . "," . "{$element_count[$i]}],";
+
+
+        }
+        
+        
+        
+        
+        ?>
+
+
+
+        //   ['Posts', 1000],
+    
         ]);
 
         var options = {
           chart: {
-            title: 'Company Performance',
-            subtitle: 'Sales, Expenses, and Profit: 2014-2017',
+            title: '',
+            subtitle: '',
           }
         };
 
@@ -191,8 +209,8 @@
         chart.draw(data, google.charts.Bar.convertOptions(options));
       }
     </script>
-    <div id="columnchart_material" style="width: 800px; height: 500px;"></div>
-    
+    <div id="columnchart_material" style="width: 'auto'; height: 500px;"></div>
+
 
                 </div>
 
