@@ -57,9 +57,13 @@
                 </p>
                 <p><span class="glyphicon glyphicon-time"></span> Posted on <?php echo $post_date ?></p>
                 <hr>
+                <a href="post.php?p_id=<?php echo $post_id; ?>">
                 <img class="img-responsive" src="images/<?php echo $post_image ?>" alt="">
+                </a>
                 <hr>
                 <p><?php echo $post_content ?></p>
+                <br>
+                <a href="post.php?p_id=<?php echo $post_id; ?>" class="btn btn-primary">Read more</a>
               
 
                 <hr>
