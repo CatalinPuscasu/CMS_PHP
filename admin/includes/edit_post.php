@@ -154,7 +154,7 @@ $query = "SELECT * FROM postari WHERE post_id = $the_get_post_id ";
 
     <div class="form-group">
         <label for="post_content">Post Content</label>
-        <textarea class = "form-control" name="post_content" id="" cols="30" rows="10"><?php echo $post_content ?>
+        <textarea class = "form-control" name="post_content" id="summernote" cols="30" rows="10"><?php echo $post_content ?>
             </textarea>
     </div>
 
