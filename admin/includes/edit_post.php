@@ -94,10 +94,27 @@ $query = "SELECT * FROM postari WHERE post_id = $the_get_post_id ";
         <input value="<?php echo $post_author ?>" type="text" name="post_author" id="" class = "form-control">
     </div>
 
-    <div class="form-group">
-        <label for="status">Post Status</label>
-        <input value="<?php echo $post_status ?>" type="text" name="post_status" id="" class = "form-control">
-    </div>
+  <div class="class-form">
+  <select name="post_status" id="">
+      <option value=''><?php echo $post_status ?></option>
+
+<?php 
+
+ if($post_status == 'published') {
+
+
+       echo "<option value='draft'>draft</option>"; 
+
+ }  else {
+
+    echo  "<option value='published'>published</option>"; 
+ }
+
+
+?>
+  </select>
+  </div>
+
 
      <div class="form-group">
        
