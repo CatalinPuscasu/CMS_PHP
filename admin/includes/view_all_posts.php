@@ -1,4 +1,24 @@
-      <table class = "table table-bordered table-hover">
+    
+    <form action="" method="post">
+    
+    <table class = "table table-bordered table-hover">
+
+    <div id="bulkOptionsContainer" class="col-xs-4">
+
+        <select name="" id="" class="form-control">
+          <option value="">Select options</option>
+          <option value="">Publish</option>
+          <option value="">Draft</option>
+          <option value="">Delete</option>
+        </select>
+    </div>
+
+    <div class="col-xs-4">
+      <input type="submit" name="submit" class="btn btn-success" value="Apply">
+      <a href="add_post.php" class="btn btn-primary">Add new</a>
+    </div>
+
+
                              <thead>
                                  <tr>
                                      <th>ID</th>
@@ -77,6 +97,8 @@
                              
                              </tbody>
                          </table>
+
+                         </form>
 
                          <?php   
                          
