@@ -69,6 +69,8 @@ $query = "SELECT * FROM postari WHERE post_id = $the_get_post_id ";
 
                           $update_query = mysqli_query($connection, $query);
 
+                          echo "The post has been updated!" . "  " . "<a href='../post.php?p_id={$the_get_post_id}'>View post</a> or <a href='posts.php'>Edit more posts</a>" ;
+
 
                           }
 
