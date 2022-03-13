@@ -21,6 +21,7 @@
 
                              <thead>
                                  <tr>
+                                   <th><input type="checkbox" name="" id="selectAllBoxes"></th>
                                      <th>ID</th>
                                      <th>Author</th>
                                      <th>Title</th>
@@ -57,6 +58,13 @@
 
 
                           echo "<tr>";
+
+                          ?>
+                          <td><input type='checkbox' name='checkBoxArray[]' class='checkBoxes' value='<?php echo $post_id; ?>'></td>
+
+                          <!-- doar prin array putem trimite datele din postarile alese cu checkbox, prin POST -->
+
+                          <?php
                           echo "<td>{$post_id}</td>"; 
                           echo "<td>{$post_author}</td>"; 
                           echo "<td>{$post_title}</td>"; 
