@@ -27,6 +27,12 @@ if(isset($_POST['create_post']))  {
 
   confirmQuery ($create_post_query);
 
+  $the_get_post_id = mysqli_insert_id($connection);
+
+  //functia scoate ultimul ID creat, in tabel
+
+  echo "The post has been created!" . "  " . "<a href='../post.php?p_id={$the_get_post_id}'>View post</a> or <a href='posts.php'>Edit more posts</a>" ;
+
 
 }
 
