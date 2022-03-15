@@ -22,6 +22,13 @@ if(isset($_POST['checkBoxArray'])) {
 
           break;
 
+          case 'delete':
+
+          $query ="DELETE FROM postari WHERE post_id = {$postValueId} ";
+          $update_to_delete = mysqli_query($connection, $query);
+
+          break;
+
          }
 
     }
