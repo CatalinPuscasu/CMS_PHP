@@ -14,7 +14,7 @@
                 <li><a href="../index.php">HOME</a></li>
 
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $_SESSION['username'] ?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
                             <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
@@ -44,7 +44,7 @@
                         <ul id="posts_dropdown" class="collapse">
                             <!-- data tagert e din JS, ca sa se deschida dropdwonul bun, in bootstrap -->
                             <li>
-                                <a href="posts.php">View all Posts</a>
+                                <a href="./posts.php">View all Posts</a>
                             </li>
                             <li>
                                 <a href="posts.php?source=add_post">Add post</a>
@@ -52,7 +52,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="categories.php"><i class="fa fa-fw fa-wrench"></i> Categories</a>
+                        <a href="./categories.php"><i class="fa fa-fw fa-wrench"></i> Categories</a>
                     </li>
                 
                     <li class="">
