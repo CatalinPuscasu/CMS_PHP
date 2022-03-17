@@ -25,6 +25,11 @@ if (isset($_POST['login'])) {
         $db_role = $row['user_role'];
   }
 
+$password = crypt($password, $db_password);
+
+//convertim parola criptata inapoi la aia normala
+
+
  if($username === $db_username && $password === $db_password) {
 
    $_SESSION['username'] = $db_username;
