@@ -9,7 +9,10 @@ if (isset($_POST['submit'])) {
   $email = $_POST['email'];
   $password = $_POST['password'];
 
-  $username = mysqli_real_escape_string($connection, $username);
+
+  if (!empty($username) && !empty($email) && !empty($password)) {
+
+      $username = mysqli_real_escape_string($connection, $username);
   $email = mysqli_real_escape_string( $connection, $email);
   $password = mysqli_real_escape_string($connection, $password);
 
@@ -23,6 +26,14 @@ $query = "INSERT INTO users (username, user_email, user_password, user_role) ";
 $query .= "VALUES('{$username}', '{$email}', '{$password}', 'subscriber' )";
 
 $register_user_query = mysqli_query($connection, $query);
+
+
+  } else {
+
+    echo "<script>alert('All fields must be filled!')</script>";
+  }
+
+
 
 
 
