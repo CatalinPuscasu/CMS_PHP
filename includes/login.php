@@ -25,9 +25,11 @@ if (isset($_POST['login'])) {
         $db_role = $row['user_role'];
   }
 
-$password = crypt($password, $db_password);
+// $password = crypt($password, $db_password);
 
 //convertim parola criptata inapoi la aia normala
+
+//nu-mi iese ca parola nu e criptata bine, apare la toti *0
 
 
  if($username === $db_username && $password === $db_password) {
