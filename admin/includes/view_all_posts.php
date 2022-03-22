@@ -173,7 +173,7 @@ if(isset($_POST['checkBoxArray'])) {
                           echo "<td><a href='../post.php?p_id={$post_id}'>VIEW POST</a></td>";
                           echo "<td><a href='posts.php?source=edit_post&p_id={$post_id}'>EDIT</a></td>";
                           echo "<td><a onClick=\"javascript: return confirm('Are you sure you want to delete?'); \" href='posts.php?delete={$post_id}'>DELETE</a></td>"; 
-                          echo "<td>{$post_view_count}</td>";
+                          echo "<td><a href='posts.php?reset={$post_id}'>{$post_view_count}</a></td>";
                           echo "</tr>";
                           }
                           
@@ -197,6 +197,17 @@ if(isset($_POST['checkBoxArray'])) {
                            $delete_query = mysqli_query($connection, $query);
 
                          }  
+
+                         if (isset($_GET['reset']))  {
+                              
+                           header("Location : posts.php"); // ca sa nu mai apas de 2 ori ca sa sterg cv
+
+                           $the_post_id = $_GET['reset'];
+
+                           $reset_views_query = "UPDATE postari SET post_view_count = 0 WHERE post_id = {$the_post_id} ";
+                           $reset_query = mysqli_query($connection, $reset_views_query);
+
+                         } 
                          
                          
                          
