@@ -14,14 +14,22 @@
 
             <?php  
 
+           
+
             if (isset($_GET['p_id'])) {
 
 
                 $the_post_id = $_GET['p_id'];
 
+                if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+
+              
+
 
             $view_query = "UPDATE postari SET post_view_count = post_view_count + 1 WHERE post_id = $the_post_id ";
             $send_query = mysqli_query($connection, $view_query);
+
+        }
            
             
             $query = "SELECT * FROM postari WHERE post_id = $the_post_id ";  // asta e ca sa ne vina doar posatrea la care am dat click pe titlu
@@ -113,13 +121,6 @@
 
                         
                     }
-
-                
-
-          
-                 
-                 
-                 
                  
                  ?>
 
