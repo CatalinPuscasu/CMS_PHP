@@ -119,6 +119,8 @@
                     echo "<script>alert('Fields cannot be empty!')</script>";
                  }
 
+                 header("Location: post.php?p_id=$the_post_id");
+
                         
                     }
                  
