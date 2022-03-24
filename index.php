@@ -13,6 +13,11 @@
             <div class="col-md-8">
 
             <?php  
+
+            $post_query_count = "SELECT * FROM postari";
+            $find_count = mysqli_query($connection, $post_query_count);
+            $count= mysqli_num_rows($find_count);
+
             
             $query = "SELECT * FROM postari";
 
