@@ -18,6 +18,8 @@
             $find_count = mysqli_query($connection, $post_query_count);
             $count= mysqli_num_rows($find_count);
 
+            $count= ceil($count / 5);
+
             
             $query = "SELECT * FROM postari";
 
@@ -91,6 +93,20 @@
 
         </div>
         <!-- /.row -->
+
+
+        <ul class="pager">
+           <?php 
+           
+        for ($i=1; $i <= $count; $i++) {
+
+         echo "<li><a href='index.php?page={$i}'> $i </a></li>";
+
+        }
+   
+           
+           ?>
+        </ul>
 
         <hr>
 
