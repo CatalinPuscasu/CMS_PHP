@@ -44,15 +44,25 @@ if(isset($_POST['edit_user']))  {
 //    move_uploaded_file($post_image_temp, "../images/$post_image");
 // ca sa plece img din temp in folderul destinatie
 
-   $query = "SELECT randSalt FROM users";
-   $select_randSalt_query = mysqli_query($connection, $query);
-
-   $row = mysqli_fetch_array($select_randSalt_query);
-   $salt = $row['randSalt'];
-   $hashed_password = crypt($user_password, $salt);
 
 
-       $query = "UPDATE users SET ";
+   if (!empty($user_password)) {
+
+    $query_password = "SELECT user_password FROM users WHERE user_id = $the_user_id ";
+    $get_user= mysqli_query($connection, $query_password);
+
+    $row = mysqli_fetch_array($get_user);
+
+     $db_user_password = $row['user_password'];
+      
+
+      if ($db_user_password !== $user_password) {
+
+  $hashed_password = password_hash($user_password, PASSWORD_BCRYPT, array('cost' => 10));
+     
+   }
+
+    $query = "UPDATE users SET ";
                           $query.="user_first_name = '{$user_firstname}', ";
                           $query.="user_last_name = '{$user_lastname}', ";
                           $query.="user_role = '{$user_role}', ";
@@ -63,8 +73,8 @@ if(isset($_POST['edit_user']))  {
 
                           $edit_user_query = mysqli_query($connection, $query);
 
-  
-
+        echo "User Updated!" . "<a href='users.php'>View Users </a>";
+   }
 
 }
 
