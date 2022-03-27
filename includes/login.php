@@ -32,7 +32,7 @@ if (isset($_POST['login'])) {
 //nu-mi iese ca parola nu e criptata bine, apare la toti *0
 
 
- if($username === $db_username && $password === $db_password) {
+ if(password_verify($password, $db_password)) {
 
    $_SESSION['username'] = $db_username;
    $_SESSION['firstname'] = $db_firstname;
