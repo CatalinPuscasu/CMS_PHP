@@ -16,14 +16,16 @@ if (isset($_POST['submit'])) {
   $email = mysqli_real_escape_string( $connection, $email);
   $password = mysqli_real_escape_string($connection, $password);
 
-  $query = "SELECT randSalt from users";
-  $select_randSalt_query = mysqli_query($connection, $query);
+  $password = password_hash($password, PASSWORD_BCRYPT, array('cost' => 12));
 
-$row = mysqli_fetch_array($select_randSalt_query);
+//   $query = "SELECT randSalt from users";
+//   $select_randSalt_query = mysqli_query($connection, $query);
 
-$salt = $row['randSalt'];
+// $row = mysqli_fetch_array($select_randSalt_query);
 
-$password = crypt($password, $salt);
+// $salt = $row['randSalt'];
+
+// $password = crypt($password, $salt);
 
     
 $query = "INSERT INTO users (username, user_email, user_password, user_role) ";
