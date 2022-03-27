@@ -27,7 +27,6 @@
                                      <th>Comment</th>
                                      <th>Email</th>
                                      <th>Status</th>
-                                     <th>In response to</th>
                                      <th>Date</th>
                                      <th>Approve</th>
                                      <th>Unapprove</th>
@@ -93,9 +92,9 @@
 
 
                           echo "<td>{$comment_date}</td>"; 
-                          echo "<td><a href='comments.php?approve=$comment_id'>APPROVE</a></td>";
-                          echo "<td><a href='comments.php?unapprove=$comment_id'>UNAPPROVE</a></td>"; 
-                          echo "<td><a href='comments.php?delete=$comment_id'>DELETE</a></td>"; 
+                          echo "<td><a href='post_comments.php?approve=$comment_id'>APPROVE</a></td>";
+                          echo "<td><a href='post_comments.php?unapprove=$comment_id'>UNAPPROVE</a></td>"; 
+                          echo "<td><a href='post_comments.php?delete=$comment_id'>DELETE</a></td>"; 
                           echo "</tr>";
                           }
                           
@@ -153,7 +152,7 @@
                            $query = "DELETE FROM comments WHERE comment_id = {$the_comment_id} ";
                            $delete_query = mysqli_query($connection, $query);
 
-                            header("Location: comments.php"); // ca sa nu mai apas de 2 ori ca sa sterg cv
+                            header("Location: post_comments.php"); // ca sa nu mai apas de 2 ori ca sa sterg cv
 
 
                          }  
