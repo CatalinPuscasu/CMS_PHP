@@ -79,9 +79,36 @@ if(isset($_POST['create_post']))  {
         </select>
     </div>
 
-    <div class="form-group">
+    <!-- <div class="form-group">
         <label for="author">Post Author</label>
         <input type="text" name="author" id="" class = "form-control">
+    </div> -->
+
+    <div class="form-group">
+        <label for="post_users">Users</label>
+        <select name="post_category" id="">
+
+<?php  
+
+
+  $users_query = "SELECT * FROM users "; 
+            $select_users = mysqli_query($connection, $users_query);
+
+                              //am schimbat putin  numele pentru a evita un conflict
+                  
+                                 
+                            while ($row = mysqli_fetch_assoc($select_users))  {
+                           
+                                     
+                            $user_id = $row['user_id'];
+                            $username = $row['username'];
+
+                             echo "<option value='{$user_id}'>{$username}</option>";
+
+                            }
+
+?>
+        </select>
     </div>
 
     <div class="form-group">
