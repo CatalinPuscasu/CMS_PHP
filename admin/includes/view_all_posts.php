@@ -122,6 +122,7 @@ if(isset($_POST['checkBoxArray'])) {
                               
                           $post_id = $row['post_id'];
                           $post_author = $row['post_author'];
+                          $post_user = $row['post_user'];
                           $post_title = $row['post_title'];                          
                           $post_category_id = $row['post_category_id'];
                           $post_status = $row['post_status'];
@@ -141,7 +142,17 @@ if(isset($_POST['checkBoxArray'])) {
 
                           <?php
                           echo "<td>{$post_id}</td>"; 
-                          echo "<td>{$post_author}</td>"; 
+
+                          if (isset($post_author) || !empty($post_author)) {
+                              
+                            echo "<td>{$post_author}</td>"; 
+
+                          } elseif (isset($post_user) || !empty($post_user)) {
+
+
+                          }
+
+
                           echo "<td>{$post_title}</td>"; 
 
                               $query = "SELECT * FROM categorii WHERE cat_id = {$post_category_id} "; //relational
