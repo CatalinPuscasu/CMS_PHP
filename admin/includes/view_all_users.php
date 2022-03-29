@@ -128,17 +128,26 @@
                         //DELETE
                          
                          if (isset($_GET['delete']))  {
+
+                          if (isset($_SESSION['role'])) {  // to imporve security
+
+                              if ($_SESSION['role'] == 'admin') {  // to prevent URL myswl injection
+                         
                               
 
-                           $the_user_id = $_GET['delete'];
+                           $the_user_id =mysqli_real_escape_string($connection,  $_GET['delete']);
 
                            $query = "DELETE FROM users WHERE user_id = {$the_user_id} ";
                            $delete_user_query = mysqli_query($connection, $query);
 
                             header("Location: users.php"); // ca sa nu mai apas de 2 ori ca sa sterg cv
 
+                            }
 
-                         }  
+                        }
+
+
+                 }  
                          
                          
                          
