@@ -3,15 +3,24 @@
 
 <?php  
 
+
+
 if (isset($_POST['Send'])) {
 
+
+
+
   $to = "puscasucatalin437@gmail.com";
-  $subject = $_POST['subject'];
+  $subject = wordwrap($_POST['subject'], 70);
   $body = $_POST['body'];
+  $header = $_POST['email'];
+
+mail($to,$subject,$body, $header);
 
 
-
+  // imi trebuie un server SMTP, ori sa fac aplcaitia php online, asa nu am cum sa trimit mailuri
 }
+
 
 
 ?>
@@ -31,7 +40,7 @@ if (isset($_POST['Send'])) {
             <div class="col-xs-6 col-xs-offset-3">
                 <div class="form-wrap">
                 <h1>Contact</h1>
-                    <form role="form" action="registration.php" method="post" id="login-form" autocomplete="off">
+                    <form role="form" action="contact.php" method="post" id="login-form" autocomplete="off">
                          <div class="form-group">
                             <label for="email" class="sr-only">Email</label>
                             <input type="email" name="email" id="email" class="form-control" placeholder="somebody@example.com">
