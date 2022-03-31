@@ -34,9 +34,14 @@
            
             }
 
-            $post_query_count = "SELECT * FROM postari";
+            $post_query_count = "SELECT * FROM postari WHERE post_status = 'published' ";
             $find_count = mysqli_query($connection, $post_query_count);
             $count= mysqli_num_rows($find_count);
+
+            if ($count < 1) {
+
+              echo "<h1>No posts</h1>";
+            } 
 
             $count= ceil($count / 5);
 
