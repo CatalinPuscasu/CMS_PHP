@@ -19,11 +19,19 @@
                $the_post_category = $_GET['category'];
 
 
-            }
             
-            $query = "SELECT * FROM postari WHERE post_category_id = $the_post_category ";
+            
+            $query = "SELECT * FROM postari WHERE post_category_id = $the_post_category AND post_status = 'published' ";
 
             $select_all_posts_query = mysqli_query($connection, $query);
+
+            if (mysqli_num_rows($select_all_posts_query)) {
+           
+
+              echo "<h1>No categories</h1>";
+                 
+
+            
 
             while ($row = mysqli_fetch_assoc($select_all_posts_query))  {
               $post_id = $row['post_id'];
@@ -63,7 +71,11 @@
 
 
 
- <?php   } ?>
+ <?php   } } } else {
+
+     header("Location: index.php");
+     
+ } ?>
 
          
 
