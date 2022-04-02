@@ -23,18 +23,34 @@
 
                 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
-              
-
-
             $view_query = "UPDATE postari SET post_view_count = post_view_count + 1 WHERE post_id = $the_post_id ";
             $send_query = mysqli_query($connection, $view_query);
 
         }
+
+        if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin' ) {
+
+            // so that the posts can only be seen by admin sesssion, the visiotrs won't see them
+
+           $query = "SELECT * FROM postari WHERE post_id = $the_post_id ";
+        }  else {
+
+
+            $query = "SELECT * FROM postari WHERE post_id = $the_post_id AND post_status = 'published' ";
+        }
            
             
-            $query = "SELECT * FROM postari WHERE post_id = $the_post_id ";  // asta e ca sa ne vina doar posatrea la care am dat click pe titlu
+            //$query = "SELECT * FROM postari WHERE post_id = $the_post_id ";  // asta e ca sa ne vina doar posatrea la care am dat click pe titlu
 
             $select_all_posts_query = mysqli_query($connection, $query);
+
+
+             if (mysqli_num_rows($select_all_posts_query) < 1) {
+           
+
+              echo "<h1>No posts available</h1>";
+
+             } else {
 
             while ($row = mysqli_fetch_assoc($select_all_posts_query))  {
       
@@ -51,8 +67,8 @@
 
 
        <h1 class="page-header">
-                    Page Heading
-                    <small>Secondary Text</small>
+                    Posts
+               
                 </h1>
 
                 <!-- First Blog Post -->
@@ -77,11 +93,7 @@
 
 
 
-} else {
 
-   header("Location : index.php");
-
-}
 
 
 
@@ -189,16 +201,13 @@
                     </div>
                 </div>
 
-           <?php  }  ?>
-            
-              
-            
-            
-        
+           <?php  } } } else {
 
-      
-        
+   header("Location : index.php");
 
+}  ?>
+            
+ 
             </div>
 
             <!-- Blog Sidebar Widgets Column -->
