@@ -53,8 +53,17 @@
 
                 <!-- LOGIN -->
 
-                 <div class="well">
-                    <h4>Login</h4>
+                <?php if(isset($_SESSION['role'])): ?>
+
+                     <div class="well">
+                    <h4>Logged in as <?php echo $_SESSION['username']; ?></h4>
+
+                    <a href="includes/logout.php" class="btn btn-primary">Logout</a>
+                       </div>
+
+                <?php else: ?>
+                        <div class="well">
+                      <h4>Login</h4>
                     <form action="includes/login.php" method = "POST">
                     <div class="form-group">
                         <input name = "username" type="text" class="form-control" placeholder="username">                       
@@ -67,9 +76,15 @@
                         </span>                   
                     </div>
                 </form>   
-                <!-- search form -->
+                  <!-- search form -->
                     <!-- /.input-group -->
                 </div>
+
+                <?php endif; ?>
+
+               
+                  
+              
 
 
 
