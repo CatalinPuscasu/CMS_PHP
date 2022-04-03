@@ -136,25 +136,14 @@
 
    <?php   
 
-   $query = "SELECT * FROM postari WHERE post_status = 'published' ";
-
-    $display_published_posts = mysqli_query($connection, $query);
-    $published_post_counts = mysqli_num_rows($display_published_posts);
+  
+   $published_post_counts = checkStatus('postari', 'post_status', 'published');
    
-    $query = "SELECT * FROM postari WHERE post_status = 'draft' ";
+   $draft_post_counts = checkStatus('postari', 'post_status', 'draft');
 
-    $display_draft_posts = mysqli_query($connection, $query);
-    $draft_post_counts = mysqli_num_rows($display_draft_posts);
+   $unapproved_comments_counts = checkStatus('comments', 'comment_status', 'unapproved');
 
-    $query = "SELECT * FROM comments WHERE comment_status = 'unapproved' ";
-
-    $display_unapproved_comments = mysqli_query($connection, $query);
-    $unapproved_comments_counts = mysqli_num_rows($display_unapproved_comments);
-
-    $query = "SELECT * FROM users WHERE user_role = 'subscriber' ";
-
-    $display_subcribers = mysqli_query($connection, $query);
-    $subscribers_counts = mysqli_num_rows($display_subcribers);
+    $subscribers_counts = checkUserRole('users', 'user_role', 'subscriber');
    
    
    
@@ -186,9 +175,7 @@
 
 
         }
-        
-        
-        
+
         
         ?>
 
