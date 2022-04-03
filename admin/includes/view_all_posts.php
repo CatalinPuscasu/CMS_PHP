@@ -115,7 +115,15 @@ if(isset($_POST['checkBoxArray'])) {
                               
                           <?php  
                           
-                          $query = "SELECT * FROM postari ORDER BY post_id DESC"; 
+                          // $query = "SELECT * FROM postari ORDER BY post_id DESC"; 
+
+        // 03/04/2022 JOINING TABLES
+  $query = "SELECT postari.post_id, postari.post_author, postari.post_user, postari.post_title, postari.post_category_id, postari.post_status, postari.post_image, postari.post_tags, postari.post_comment_count, postari.post_date, postari.post_view_count, ";
+  $query.= "categorii.cat_id, categorii.cat_title FROM postari LEFT JOIN categorii ON post_category_id = categorii.cat_id ORDER BY post_id DESC ";
+
+  // dupa ON , capmurile trebuie sa fie al fel, o cheie comuna
+
+
                           $select_posts = mysqli_query($connection, $query);
                   
                                  
@@ -133,6 +141,9 @@ if(isset($_POST['checkBoxArray'])) {
                           $post_comment_count = $row['post_comment_count'];
                           $post_date = $row['post_date'];
                           $post_view_count = $row['post_view_count'];
+                          $category_id = $row['cat_id'];
+                          $category_title = $row['cat_title'];
+
 
 
                           echo "<tr>";
@@ -158,24 +169,24 @@ if(isset($_POST['checkBoxArray'])) {
 
                           echo "<td>{$post_title}</td>"; 
 
-                              $query = "SELECT * FROM categorii WHERE cat_id = {$post_category_id} "; //relational
-                              $select_categories_id = mysqli_query($connection, $query);
+                            //   $query = "SELECT * FROM categorii WHERE cat_id = {$post_category_id} "; //relational
+                            //   $select_categories_id = mysqli_query($connection, $query);
 
-                              //am schimbat putin  numele pentru a evita un conflict
+                            //   //am schimbat putin  numele pentru a evita un conflict
                   
                                  
-                            while ($row = mysqli_fetch_assoc($select_categories_id))  {
+                            // while ($row = mysqli_fetch_assoc($select_categories_id))  {
                            
                                      
-                            $cat_id = $row['cat_id'];
-                            $cat_title = $row['cat_title'];
+                            // $cat_id = $row['cat_id'];
+                            // $cat_title = $row['cat_title'];
                             
 
 
                           
-                                  }
+                            //       }
 
-                          echo "<td>{$cat_title}</td>"; 
+                          echo "<td>{$category_title}</td>"; 
 
 
 
