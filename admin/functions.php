@@ -118,6 +118,20 @@ function deleteCategories() {
 
 }
 
+// refactoring, for the display data queries
+
+function recordCount ($table) {
+
+  global $connection;
+
+     $query = "SELECT * FROM " . $table;
+     $display_posts_number = mysqli_query($connection, $query);
+
+    $result = mysqli_num_rows($display_posts_number);
+
+    return $result;
+}
+
 
 
 
