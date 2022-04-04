@@ -1,5 +1,6 @@
 <?php  include "includes/db.php"; ?>
  <?php  include "includes/header.php"; ?>
+ <?php include "./admin/functions.php"; ?>
 
 <?php  
 
@@ -8,6 +9,12 @@ if (isset($_POST['submit'])) {
   $username = $_POST['username'];
   $email = $_POST['email'];
   $password = $_POST['password'];
+
+  if(usernameExists($username)) {
+
+    echo "<script>alert('This username already exists! PLease choose another one')</script>";
+       
+  }
 
 
   if (!empty($username) && !empty($email) && !empty($password)) {
