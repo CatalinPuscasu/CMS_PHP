@@ -200,6 +200,78 @@ function usernameExists($username) {
 
 }
 
+function emailExists($email) {
+
+  global $connection;
+
+  $query = "SELECT user_email FROM users WHERE user_email = '$email' ";
+
+  $result = mysqli_query($connection, $query);
+
+ $row = mysqli_fetch_array($result);
+ 
+ if (mysqli_num_rows($result) > 0) {
+
+    return true;
+
+ } else {
+
+   return false;
+
+ }
+
+}
+
+function registerUser($username, $email, $password) {
+
+  
+  
+
+  if(usernameExists($username)) {
+
+    echo "<script>alert('This username already exists! PLease choose another one')</script>";
+       
+  }
+
+
+  if (!empty($username) && !empty($email) && !empty($password)) {
+
+      $username = mysqli_real_escape_string($connection, $username);
+  $email = mysqli_real_escape_string( $connection, $email);
+  $password = mysqli_real_escape_string($connection, $password);
+
+  $password = password_hash($password, PASSWORD_BCRYPT, array('cost' => 12));
+
+//   $query = "SELECT randSalt from users";
+//   $select_randSalt_query = mysqli_query($connection, $query);
+
+// $row = mysqli_fetch_array($select_randSalt_query);
+
+// $salt = $row['randSalt'];
+
+// $password = crypt($password, $salt);
+
+    
+$query = "INSERT INTO users (username, user_email, user_password, user_role) ";
+$query .= "VALUES('{$username}', '{$email}', '{$password}', 'subscriber' )";
+
+$register_user_query = mysqli_query($connection, $query);
+
+
+  } else {
+
+    echo "<script>alert('All fields must be filled!')</script>";
+  }
+
+
+}
+
+function redirect($location) {
+
+  return header("Location:" . $location);
+
+}
+
 
 
 ?>
