@@ -6,48 +6,47 @@
 
 if (isset($_POST['submit'])) {
 
-  $username = $_POST['username'];
-  $email = $_POST['email'];
-  $password = $_POST['password'];
+ $username = trim($_POST['username']);
+  $email = trim($_POST['email']);
+  $password = trim($_POST['password']);
 
-  if(usernameExists($username)) {
+  $error = [
+    'username' => '',
+    'email'=> '',
+    'password'=> ''
+  ];
 
-    echo "<script>alert('This username already exists! PLease choose another one')</script>";
-       
+
+  if (strlen($username) < 4) {
+
+    $error['username'] = 'username needs to be longer';
+  }
+
+  if (strlen($username) == '') {
+
+    $error['username'] = 'username cannot be empty';
+  }
+
+  if (usernameExists($username)) {
+
+    $error['username'] = 'username already exists';
+  }
+
+ if (strlen($email) == '') {
+
+    $error['email'] = 'email cannot be empty';
+  }
+
+  if (emailExists($email)) {
+
+    $error['email'] = 'email already exists, you can log in : <a href="index.php">log in </a>';
   }
 
 
-  if (!empty($username) && !empty($email) && !empty($password)) {
+  if (strlen($password) == '') {
 
-      $username = mysqli_real_escape_string($connection, $username);
-  $email = mysqli_real_escape_string( $connection, $email);
-  $password = mysqli_real_escape_string($connection, $password);
-
-  $password = password_hash($password, PASSWORD_BCRYPT, array('cost' => 12));
-
-//   $query = "SELECT randSalt from users";
-//   $select_randSalt_query = mysqli_query($connection, $query);
-
-// $row = mysqli_fetch_array($select_randSalt_query);
-
-// $salt = $row['randSalt'];
-
-// $password = crypt($password, $salt);
-
-    
-$query = "INSERT INTO users (username, user_email, user_password, user_role) ";
-$query .= "VALUES('{$username}', '{$email}', '{$password}', 'subscriber' )";
-
-$register_user_query = mysqli_query($connection, $query);
-
-
-  } else {
-
-    echo "<script>alert('All fields must be filled!')</script>";
+    $error['$password'] = '$password cannot be empty';
   }
-
-
-
 
 
 }
