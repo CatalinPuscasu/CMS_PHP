@@ -52,9 +52,20 @@ if (isset($_POST['submit'])) {
 
        if (empty($value)) {
 
-        registerUser($username, $email, $password);
-        loginUser($username, $password);
+        unset($error['$key']);
        }
+  }
+
+  if (empty($error)) {
+  
+        registerUser($username, $email, $password);
+
+    
+  }
+
+  if (!registerUser($username, $email, $password)) {
+
+    echo  mysqli_error($connection);
   }
 
 
@@ -86,7 +97,7 @@ if (isset($_POST['submit'])) {
                          <div class="form-group">
                             <label for="email" class="sr-only">Email</label>
                             <input type="email" name="email" id="email" class="form-control" placeholder="somebody@example.com" autocomplete="on" value="<?php echo isset($email) ? $email : '' ?>">
-                            <p><?php echo isset($error['username']) ? $error['username'] : '' ?></p>
+                            <p><?php echo isset($error['email']) ? $error['email'] : '' ?></p>
                         </div>
                          <div class="form-group">
                             <label for="password" class="sr-only">Password</label>
