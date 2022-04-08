@@ -1,9 +1,12 @@
 <?php include "db.php"; ?>
+<?php include "../admin/includes/functions.php"; ?>
 <?php session_start(); ?>
 
 <?php 
 
 if (isset($_POST['login'])) {
+
+
    
    $username = $_POST['username'];
    $password = $_POST['password'];
@@ -50,6 +53,9 @@ if (isset($_POST['login'])) {
    
 
  }
+
+
+
 
 
 }
