@@ -35,9 +35,12 @@
              // cand ajunge la GET, putem numi o variabila(cat_id) gen diferit
             $the_cat_title = $_POST['cat_title'];
 
-            $query = "UPDATE categorii SET cat_title = '{$the_cat_title}' WHERE cat_id = {$cat_id} ";
+            $stmt = mysqli_prepare($connection, "UPDATE categorii SET cat_title = ? WHERE cat_id = ? ");
 
-            $update_query = mysqli_query($connection, $query);
+            mysqli_stmt_bind_param($stmt, "si", $the_cat_title, $cat_id);
+
+                        mysqli_stmt_execute($stmt);
+
                           }
                          
                          ?>   
