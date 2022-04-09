@@ -205,9 +205,26 @@ if(isset($_POST['checkBoxArray'])) {
 
 
                           echo "<td>{$post_date}</td>"; 
-                          echo "<td><a href='../post.php?p_id={$post_id}'>VIEW POST</a></td>";
-                          echo "<td><a href='posts.php?source=edit_post&p_id={$post_id}'>EDIT</a></td>";
-                          echo "<td><a onClick=\"javascript: return confirm('Are you sure you want to delete?'); \" href='posts.php?delete={$post_id}'>DELETE</a></td>"; 
+                          echo "<td><a href='../post.php?p_id={$post_id}' class='btn btn-primary'>VIEW POST</a></td>";
+                          echo "<td><a href='posts.php?source=edit_post&p_id={$post_id}' class='btn btn-info'>EDIT</a></td>";
+
+                          ?>
+
+                          <form action="posts.php" method="post">
+
+                            <input type="hidden" name="post_id" value="<?php echo $post_id ?>">
+
+                            <?php
+                          echo  "<td><input class='btn btn-danger' type='submit' value='Delete' name='delete'></td>";
+
+                            ?>
+
+                          </form>
+
+                          <?php
+
+
+                          // echo "<td><a onClick=\"javascript: return confirm('Are you sure you want to delete?'); \" href='posts.php?delete={$post_id}'>DELETE</a></td>"; 
                           echo "<td><a href='posts.php?reset={$post_id}'>{$post_view_count}</a></td>";
                           echo "</tr>";
                           }
@@ -222,11 +239,11 @@ if(isset($_POST['checkBoxArray'])) {
 
                          <?php   
                          
-                         if (isset($_GET['delete']))  {
+                         if (isset($_POST['delete']))  {
                               
                            header("Location : posts.php"); // ca sa nu mai apas de 2 ori ca sa sterg cv
 
-                           $the_post_id = $_GET['delete'];
+                           $the_post_id = $_POST['post_id'];
 
                            $query = "DELETE FROM postari WHERE post_id = {$the_post_id} ";
                            $delete_query = mysqli_query($connection, $query);
