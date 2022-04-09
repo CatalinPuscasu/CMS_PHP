@@ -10,7 +10,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="./index.php">CMS HOMEPAGE</a>
+                <a class="navbar-brand" href="./index">CMS HOMEPAGE</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -45,7 +45,7 @@
                 $registration_class = 'active';
               }
 
-             echo "<li class='{$category_class}'> <a href='category.php?category={$cat_id}'>{$cat_title}</a></li>";
+             echo "<li class='{$category_class}'> <a href='/CMS_PHP/category/{$cat_id}'>{$cat_title}</a></li>";
 
 
            }
@@ -54,14 +54,14 @@
 
 
                     <li>
-                        <a href="admin">Admin</a>
+                        <a href="/CMS_PHP/admin">Admin</a>
                     </li>
 
                       <li class='<?php echo $registration_class; ?>'>
-                        <a href="registration.php">Registration</a>
+                        <a href="/CMS_PHP/registration">Registration</a>
                     </li>
                       <li>
-                        <a href="contact.php">Contact</a>
+                        <a href="/CMS_PHP/contact">Contact</a>
                     </li>
 
 
@@ -75,7 +75,7 @@
                             $the_post_id = $_GET['p_id'];
                                 
 
-                              echo "<li><a href='admin/posts.php?source=edit_post&p_id={$the_post_id}'> Edit post </a></li>";
+                              echo "<li><a href='/CMS_PHP/admin/posts.php?source=edit_post&p_id={$the_post_id}'> Edit post </a></li>";
 
                         }
 
