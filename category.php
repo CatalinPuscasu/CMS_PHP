@@ -18,14 +18,25 @@
 
                $the_post_category = $_GET['category'];
 
-
             
-            
-            $query = "SELECT * FROM postari WHERE post_category_id = $the_post_category AND post_status = 'published' ";
+            $query = mysqli_prepare($connection, "SELECT post_id, post_title, post_author, post_date, post_image, post_content FROM postari WHERE post_category_id = ? AND post_status = ? ");
 
-            $select_all_posts_query = mysqli_query($connection, $query);
+            $published = 'published';
 
-            if (mysqli_num_rows($select_all_posts_query)) {
+            //unele prepare statement snu iau strings, deci trebuie create variabile
+
+            if (isset($query)) {
+
+              mysqli_stmt_bind_param($query, "is", $the_post_category, $published);
+
+              mysqli_stmt_execute($query);
+
+              mysqli_stmt_bind_result($query, $post_id, $post_title, $post_author, $post_date, $post_image, $post_content);
+
+              // acum postare respectiva nu se mai vede.... trebuie sa revad asta
+            }
+
+            if (mysqli_stmt_num_rows($query)) {
            
 
               echo "<h1>No categories</h1>";
@@ -33,7 +44,7 @@
 
             
 
-            while ($row = mysqli_fetch_assoc($select_all_posts_query))  {
+            while (mysqli_fetch_assoc($select_all_posts_query))  {
               $post_id = $row['post_id'];
               $post_title = $row['post_title'];
               $post_author = $row['post_author'];
