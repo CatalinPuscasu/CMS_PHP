@@ -55,12 +55,14 @@ function insert_categories () {
                          echo "This field must not be empty";
                      }  else {
 
-                        $query = "INSERT INTO categorii(cat_title) ";
-                        $query .= "VALUE('{$cat_title}') ";
+                        $stmt1 = mysqli_prepare($connection, "INSERT INTO categorii(cat_title) VALUE (?) ");
+                      
 
-                        $create_category_query = mysqli_query($connection, $query);
+                        mysqli_stmt_bind_param($stmt1, "s", $cat_title);
 
-                        if (!$create_category_query) {
+                        mysqli_stmt_execute($stmt1);
+
+                        if (!$stmt1) {
 
                            die('QUERY FAILED' . mysqli_error($connection));
 
