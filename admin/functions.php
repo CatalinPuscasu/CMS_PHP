@@ -321,6 +321,42 @@ header("Location: index.php");
 
 // trebuie sa o revad altadata...
 
+function ifItIsMethod($method=null) {
+
+  //checing between methods : POST, GET etc
+
+  if ($_SERVER['REQUEST_METHOD'] == strtoupper($method)) {
+    
+    return true;
+
+  } else {
+
+    return false;
+  }
+
+}
+
+function isLoggedIn() {
+
+   if (isset($_SESSION['role'])) {
+
+       return true;
+
+   } 
+
+   return false;
+
+}
+
+function checkIfUserLoggedInAndredirect ($redirectLocation) {
+
+  if (isLoggedIn()) {
+
+    redirect($redirectLocation);
+  }
+
+}
+
 function redirect($location) {
 
   return header("Location:" . $location);
