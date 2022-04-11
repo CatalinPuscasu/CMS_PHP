@@ -57,6 +57,10 @@
                         <a href="/CMS_PHP/admin">Admin</a>
                     </li>
 
+                     <li>
+                        <a href="/CMS_PHP/login.php">Login</a>
+                    </li>
+
                       <li class='<?php echo $registration_class; ?>'>
                         <a href="/CMS_PHP/registration">Registration</a>
                     </li>
